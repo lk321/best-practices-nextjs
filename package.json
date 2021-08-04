@@ -7,7 +7,7 @@
         "lint": "next lint",
         "format:check": "prettier --ignore-path .gitignore --check .",
         "format": "prettier --ignore-path .gitignore --write .",
-        "test-all": "yarn check-format && yarn lint && yarn build",
+        "test:all": "yarn format:check && yarn lint && yarn build",
         "prepare": "husky install"
     },
     "dependencies": {
@@ -30,5 +30,11 @@
         "eslint-plugin-react-hooks": "^4.2.0",
         "husky": "^7.0.0",
         "prettier": "^2.3.2"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "yarn run lint",
+            "pre-push": "yarn run lint && yarn run test:all"
+        }
     }
 }
