@@ -14,6 +14,8 @@
     "plugins": ["prettier"],
     "rules": {
         "prettier/prettier": "error",
+        "jsx-a11y/label-has-for": "off",
+        "jsx-a11y/label-has-associated-control": "off",
         "react/react-in-jsx-scope": "off",
         "import/prefer-default-export": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

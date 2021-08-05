@@ -1,9 +1,17 @@
 import Head from "next/head";
 import Image from "next/image";
+
+import { useSession, signOut } from "next-auth/client";
+
 import Counter from "../features/counter/Counter";
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
+function Home() {
+    const [session, loading] = useSession();
+
+    if (typeof window !== "undefined" && loading) return null;
+    if (!session) return <h2>No permitido</h2>;
+
     return (
         <div className={styles.container}>
             <Head>
@@ -20,47 +28,17 @@ export default function Home() {
                 />
                 <Counter />
                 <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
+                    Welcome <code>{session.user.name}</code>.
                 </p>
-                <span>
-                    <span>Learn </span>
-                    <a
-                        className={styles.link}
-                        href="https://reactjs.org/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        React
-                    </a>
-                    <span>, </span>
-                    <a
-                        className={styles.link}
-                        href="https://redux.js.org/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Redux
-                    </a>
-                    <span>, </span>
-                    <a
-                        className={styles.link}
-                        href="https://redux-toolkit.js.org/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Redux Toolkit
-                    </a>
-                    ,<span> and </span>
-                    <a
-                        className={styles.link}
-                        href="https://react-redux.js.org/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        React Redux
-                    </a>
-                </span>
+                <button
+                    type="button"
+                    onClick={() => signOut({ callbackUrl: "/sign-in" })}
+                >
+                    Sign out!
+                </button>
             </header>
         </div>
     );
 }
+
+export default Home;
