@@ -30,6 +30,7 @@ const Counter = () => {
                     className={styles.button}
                     aria-label="Decrement value"
                     onClick={() => dispatch(decrement())}
+                    data-cy="minus"
                 >
                     -
                 </button>
