@@ -30,4 +30,18 @@ describe("My app setup", () => {
         cy.contains("Add Async").click();
         cy.get("span:first").should("contain", "4");
     });
+
+    it("try to set amount null", () => {
+        cy.contains("Add Amount");
+        cy.get("input:first").clear();
+        cy.contains("Add Amount").click();
+        cy.get("span:first").should("contain", "0");
+    });
+
+    it("try to set the async amount null", () => {
+        cy.contains("Add Async");
+        cy.get("input:first").clear();
+        cy.contains("Add Async").click();
+        cy.get("span:first").should("contain", "0");
+    });
 });

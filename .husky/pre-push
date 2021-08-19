@@ -22,7 +22,7 @@ yarn build ||
 )
 
 # Show coverage details
-npx nyc report --reporter=lcov --reporter=text
+yarn nyc report --reporter=lcov --reporter=text
 
 # If everything passes... Now we can push
 echo '✅✅✅✅ You win this time... I am pushing this now. ✅✅✅✅'
