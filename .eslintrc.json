@@ -2,14 +2,16 @@
     "env": {
         "browser": true,
         "es2021": true,
-        "node": true
+        "node": true,
+        "mocha": true
     },
     "extends": [
         "airbnb",
         "prettier",
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:cypress/recommended"
+        "plugin:cypress/recommended",
+        "plugin:chai-friendly/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -18,7 +20,7 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "plugins": ["react", "prettier", "cypress"],
+    "plugins": ["react", "prettier", "cypress", "chai-friendly"],
     "rules": {
         "prettier/prettier": "error",
         "react/react-in-jsx-scope": "off",
